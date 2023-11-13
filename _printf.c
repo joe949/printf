@@ -7,9 +7,9 @@
  */
 int _printf(const char *format, ...)
 {
+	int count = 0;
 	va_list args;
 	va_start(args, format);
-	int count = 0
 
 	while (*format != '\0')
 	{
@@ -19,21 +19,21 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					putchar(va_arg(args, int));
+					_putchar(va_arg(args, int));
 					break;
 				case 's':
 					{
 						const char *str = va_arg(args, const char *);
 						while (*str != '\0')
 						{
-							putchar(*str);
+							_putchar(*str);
 							count++;
 							str++;
 						}
 					}
 					break;
 				case '%':
-					putchar('%');
+					_putchar('%');
 					break;
 				default:
 					break;
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 		}
 		count++;
 		format++;
