@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
 
 	while (*format != '\0')
@@ -39,7 +38,11 @@ int _printf(const char *format, ...)
 				print_chr('%');
 			}
 		}
-		count++;
+		else
+		{
+			print_chr(*format);
+			count++;
+		}
 		format++;
 	}
 	va_end(args);
