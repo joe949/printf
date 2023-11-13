@@ -2,13 +2,13 @@
 /**
  * _printf - functon that produces output according to format
  * @format: input string
- *
  * Return: nmber of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
 	va_list args;
+	int count = 0;
+
 	va_start(args, format);
 
 	while (*format != '\0')
@@ -24,6 +24,7 @@ int _printf(const char *format, ...)
 				case 's':
 					{
 						const char *str = va_arg(args, const char *);
+
 						while (*str != '\0')
 						{
 							_putchar(*str);
