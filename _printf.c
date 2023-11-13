@@ -16,33 +16,29 @@ int _printf(const char *format, ...)
 		if (*format == '%' && *(format + 1) != '\0')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					break;
-				case 's':
-					{
-						const char *str = va_arg(args, const char *);
+				print_chr(va_arg(args, int));
+			}
+			else if (*format == 's')
+			{
+				const char *str = va_arg(args, const char *);
 
-						while (*str != '\0')
-						{
-							_putchar(*str);
-							count++;
-							str++;
-						}
-					}
-					break;
-				case '%':
-					_putchar('%');
-					break;
-				default:
-					break;
+				while (*str != '\0')
+				{
+					print_chr(*str);
+					count++;
+					str++;
+				}
+			}
+			else if (*format == '%')
+			{
+				print_chr('%');
 			}
 		}
 		else
 		{
-			_putchar(*format);
+			print_chr(*format);
 		}
 		count++;
 		format++;
