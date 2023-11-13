@@ -6,8 +6,11 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
 	int count = 0;
+	va_list args;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(args, format);
 
@@ -35,10 +38,6 @@ int _printf(const char *format, ...)
 			{
 				print_chr('%');
 			}
-		}
-		else
-		{
-			print_chr(*format);
 		}
 		count++;
 		format++;
