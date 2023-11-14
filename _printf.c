@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				print_chr(va_arg(args, int));
+				count += print_chr(va_arg(args, int));
 			}
 			else if (*format == 's')
 			{
@@ -26,20 +26,17 @@ int _printf(const char *format, ...)
 
 				while (*str != '\0')
 				{
-					print_chr(*str);
-					count++;
-					str++;
+					count  += print_chr(*str++);
 				}
 			}
 			else if (*format == '%')
 			{
-				print_chr('%');
+				count += print_chr('%');
 			}
 		}
 		else
 		{
-			print_chr(*format);
-			count++;
+			count += print_chr(*format);
 		}
 		format++;
 	}
